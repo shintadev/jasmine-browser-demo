@@ -41,7 +41,7 @@ describe("Login Form Tests", function () {
     expect(submitSpy).toHaveBeenCalled();
   });
 
-  it("should submit the form with [correct credentials](poe://www.poe.com/_api/key_phrase?phrase=correct%20credentials&prompt=Tell%20me%20more%20about%20correct%20credentials.)", function () {
+  it("should submit the form with correct credentials", function () {
     // Test that the form can be submitted with correct credentials
     var form = document.querySelector("#login-form");
     var submitSpy = jasmine.createSpy("submitSpy");
