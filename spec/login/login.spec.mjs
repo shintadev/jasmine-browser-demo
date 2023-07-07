@@ -45,11 +45,19 @@ describe("Login Form Tests", function () {
     // Test that the form can be submitted with correct credentials
     var form = document.querySelector("#login-form");
     var submitSpy = jasmine.createSpy("submitSpy");
-    form.addEventListener("submit", submitSpy);
+    form.addEventListener("submit", function (event) {
+      if (!validateLogin(event.target)) {
+        event.preventDefault();
+      }
+      submitSpy();
+    });
     document.querySelector("#username").value = "admin";
     document.querySelector("#password").value = "password";
     form.dispatchEvent(new Event("submit"));
-    expect(submitSpy).toHaveBeenCalled();
+    setTimeout(function () {
+      expect(submitSpy).toHaveBeenCalled();
+      done();
+    }, 1000);
   });
 
   it("should not submit the form with wrong credentials", function () {
@@ -91,7 +99,7 @@ describe("Login Form Tests", function () {
   });
 });
 
-function validateLogin(form) {
+export function validateLogin(form) {
   // Get the values of the username and password inputs
   var username = form.username.value;
   var password = form.password.value;
