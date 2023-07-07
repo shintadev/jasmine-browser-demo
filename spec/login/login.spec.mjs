@@ -44,58 +44,43 @@ describe("Login Form Tests", function () {
   it("should submit the form with correct credentials", function () {
     // Test that the form can be submitted with correct credentials
     var form = document.querySelector("#login-form");
-    var submitSpy = jasmine.createSpy("submitSpy");
+    let isValid;
     form.addEventListener("submit", function (event) {
-      if (!validateLogin(event.target)) {
-        event.preventDefault();
-      }
-      submitSpy();
+      isValid = validateLogin(event.target);
     });
-    document.querySelector("#username").value = "admin";
-    document.querySelector("#password").value = "password";
+    form.username.value = "sa";
+    form.password.value = "sa";
     form.dispatchEvent(new Event("submit"));
-    setTimeout(function () {
-      expect(submitSpy).toHaveBeenCalled();
-      done();
-    }, 1000);
+
+    expect(isValid).toBe(true);
   });
 
   it("should not submit the form with wrong credentials", function () {
     // Test that the form cannot be submitted with wrong credentials
     var form = document.querySelector("#login-form");
-    var submitSpy = jasmine.createSpy("submitSpy");
+    let isValid;
     form.addEventListener("submit", function (event) {
-      if (!validateLogin(event.target)) {
-        event.preventDefault();
-      }
-      submitSpy();
+      isValid = validateLogin(event.target);
     });
-    document.querySelector("#username").value = "wrong";
-    document.querySelector("#password").value = "wrong";
+    form.username.value = "wrong";
+    form.password.value = "wrong";
     form.dispatchEvent(new Event("submit"));
-    setTimeout(function () {
-      expect(submitSpy).not.toHaveBeenCalled();
-      done();
-    }, 1000);
+
+    expect(isValid).toBe(false);
   });
 
   it("should not submit the form with null input", function () {
     // Test that the form cannot be submitted with null input
     var form = document.querySelector("#login-form");
-    var submitSpy = jasmine.createSpy("submitSpy");
+    let isValid;
     form.addEventListener("submit", function (event) {
-      if (!validateLogin(event.target)) {
-        event.preventDefault();
-      }
-      submitSpy();
+      isValid = validateLogin(event.target);
     });
-    document.querySelector("#username").value = "";
-    document.querySelector("#password").value = "";
+    form.username.value = "";
+    form.password.value = "";
     form.dispatchEvent(new Event("submit"));
-    setTimeout(function () {
-      expect(submitSpy).not.toHaveBeenCalled();
-      done();
-    }, 1000);
+
+    expect(isValid).toBe(false);
   });
 });
 
@@ -106,9 +91,7 @@ export function validateLogin(form) {
 
   // Check if the inputs are not empty and match a valid set of credentials
   if (username !== "" && password !== "") {
-    if (username === "admin" && password === "password") {
-      return true;
-    }
+    return username === "sa" && password === "sa";
   }
 
   // Return false if the inputs are empty or invalid
