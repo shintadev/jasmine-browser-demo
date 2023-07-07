@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx jasmine-browser-runner runSpecs"
+    "test": "npx jasmine-browser-runner runSpecs",
+    "serve": "npx jasmine-browser-runner serve"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "jasmine-browser-runner": "^2.1.0",
-    "jasmine-core": "^5.0.1"
+    "jasmine-core": "^5.0.1",
+    "jasmine-jquery": "^2.1.1"
   }
 }
