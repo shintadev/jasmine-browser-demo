@@ -2,22 +2,16 @@
 <html>
 <head>
   <title>Login Form</title>
-  <script src="node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
-  <script src="node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
-  <script src="node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>
-  <script src="/spec/login/login.spec.mjs"></script>
   <script src="/src/scripts/login.js"></script>
 </head>
 <body>
   <h2>Login Form</h2>
-  <form id="login-form">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" value="username"><br><br>
-  
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" value="password"><br><br>
-  
-    <input type="submit" value="Login">
-  </form>
+      <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Login">
+        </form>
 </body>
 </html>

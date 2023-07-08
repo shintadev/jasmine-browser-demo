@@ -8,9 +8,9 @@ describe("Login Form Tests", function () {
       <h2>Login Form</h2>
       <form id="login-form">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username" value="username"><br><br>
+        <input type="text" id="username" name="username"><br><br>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" value="password"><br><br>
+        <input type="password" id="password" name="password"><br><br>
         <input type="submit" value="Login">
       </form>
     `;
@@ -84,16 +84,14 @@ describe("Login Form Tests", function () {
   });
 });
 
-export function validateLogin(form) {
+function validateLogin(form) {
   // Get the values of the username and password inputs
   var username = form.username.value;
   var password = form.password.value;
-
   // Check if the inputs are not empty and match a valid set of credentials
   if (username !== "" && password !== "") {
     return username === "sa" && password === "sa";
   }
-
   // Return false if the inputs are empty or invalid
   return false;
 }

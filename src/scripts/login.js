@@ -3,12 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
   if (loginForm !== null) {
     loginForm.addEventListener("submit", function (event) {
       event.preventDefault(); // Prevent form submission
-
-      var usernameInput = document.getElementById("username");
-      var passwordInput = document.getElementById("password");
-
       // Perform login validation
-      var isValid = validateLogin(usernameInput.value, passwordInput.value);
+      var isValid = validateLogin(loginForm);
       if (isValid) {
         alert("Login successful");
         // Add your logic for successful login
@@ -20,8 +16,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function validateLogin(username, password) {
-  // Add your login validation logic here
-  // Return true if the login is valid, otherwise false
-  return username === "admin" && password === "password";
+function validateLogin(form) {
+  // Get the values of the username and password inputs
+  var username = form.username.value;
+  var password = form.password.value;
+  // Check if the inputs are not empty and match a valid set of credentials
+  if (username !== "" && password !== "") {
+    return username === "sa" && password === "sa";
+  }
+  // Return false if the inputs are empty
+  return false;
 }
